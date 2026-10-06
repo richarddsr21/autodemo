@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="AutoDemo">
+  <!-- Logo genérico da demonstração: substituir pelo logo do cliente. -->
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E6C473"/>
+      <stop offset="1" stop-color="#B48A33"/>
+    </linearGradient>
+  </defs>
+  <rect width="120" height="120" rx="26" fill="#0A0A0A"/>
+  <path d="M20 56h7c4-9 11-19 25-21h17c11 0 19 7 25 14l7 2c3 1 5 3 5 6v3H20Z" fill="url(#g)"/>
+  <circle cx="39" cy="60" r="7" fill="#0A0A0A"/>
+  <circle cx="39" cy="60" r="4" fill="url(#g)"/>
+  <circle cx="83" cy="60" r="7" fill="#0A0A0A"/>
+  <circle cx="83" cy="60" r="4" fill="url(#g)"/>
+  <path d="M49 40h11v11H40c2-5 5-9 9-11Zm15 0h6c7 0 12 4 16 11H64Z" fill="#0A0A0A" opacity=".85"/>
+  <text x="60" y="99" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-weight="700" font-size="28" letter-spacing="3" fill="url(#g)">AD</text>
+</svg>

@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+/* Ecrãs de portátil baixos (ex.: 1366×768): layouts mais compactos. */
+@custom-variant short (@media (min-width: 1024px) and (max-height: 820px));
+
+/*
+ * As cores da marca vêm de src/config/site.ts (injetadas no <head> pelo layout).
+ * Aqui só se ligam essas variáveis às classes do Tailwind (bg-gold, text-muted, ...).
+ */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-light: var(--light);
+  --color-light-surface: var(--light-surface);
+  --color-text: var(--text);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-muted-ink: var(--muted-ink);
+  --color-gold: var(--gold);
+  --color-gold-hover: var(--gold-hover);
+  --color-gold-ink: var(--gold-ink);
+  --color-on-gold: var(--on-gold);
+  --color-line: rgb(255 255 255 / 0.09);
+  --color-line-ink: rgb(17 17 17 / 0.09);
+  --color-whatsapp: #25d366;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-outfit), var(--font-inter), ui-sans-serif, sans-serif;
+
+  --radius-card: 14px;
+  --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 24px -12px rgb(0 0 0 / 0.18);
+  --shadow-float: 0 24px 60px -24px rgb(0 0 0 / 0.55);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--on-gold);
+}
+
+/* Inputs de data com ícone claro em fundo escuro. */
+.scheme-dark {
+  color-scheme: dark;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/*
+ * Animações discretas ao fazer scroll (CSS scroll-driven, sem JavaScript).
+ * Em navegadores sem suporte o conteúdo aparece normalmente; com
+ * "reduzir movimento" ficam desligadas.
+ */
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 40%;
+    }
+  }
+
+  /* Entrada do hero ao abrir a página. */
+  .hero-in > * {
+    animation: fade-up 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  .hero-in > :nth-child(2) {
+    animation-delay: 0.06s;
+  }
+  .hero-in > :nth-child(3) {
+    animation-delay: 0.12s;
+  }
+  .hero-in > :nth-child(4) {
+    animation-delay: 0.18s;
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
